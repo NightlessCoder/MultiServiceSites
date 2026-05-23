@@ -529,26 +529,82 @@ h3 {
 
 .order-page {
   align-items: start;
+  background:
+    radial-gradient(circle at 18% 48%, rgba(47, 93, 80, 0.28), transparent 34%),
+    linear-gradient(90deg, rgba(246, 243, 237, 0.08) 0%, rgba(246, 243, 237, 0.68) 42%, #f6f3ed 58%),
+    url("./assets/order-cemetery-path.png") left center / 48% 100% no-repeat,
+    #f6f3ed;
   display: grid;
-  gap: 48px;
-  grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1.15fr);
+  gap: 28px;
+  grid-template-columns: minmax(260px, 0.82fr) minmax(360px, 1.18fr);
   min-height: 100vh;
-  padding-top: 150px;
+  padding-bottom: 40px;
+  padding-top: 112px;
 }
 
 .order-page h1 {
   color: #1f2722;
-  font-size: clamp(2.35rem, 4.2vw, 4.4rem);
+  font-size: clamp(1.8rem, 3vw, 2.9rem);
+  margin-bottom: 10px;
 }
 
 .back-link {
-  background: transparent;
-  border: 0;
-  color: #59685f;
+  background: #2f5d50;
+  border: 1px solid #2f5d50;
+  border-radius: 8px;
+  color: #fffdfa;
   cursor: pointer;
   font-weight: 800;
-  margin-bottom: 28px;
-  padding: 0;
+  margin-bottom: 12px;
+  min-height: 40px;
+  padding: 9px 12px;
+}
+
+.back-link:hover {
+  background: #24362f;
+  border-color: #24362f;
+  color: #fffdfa;
+}
+
+.order-copy {
+  position: sticky;
+  top: 104px;
+}
+
+.order-photo {
+  background:
+    linear-gradient(180deg, rgba(15, 23, 19, 0.1), rgba(15, 23, 19, 0.78)),
+    rgba(15, 23, 19, 0.18);
+  border-radius: 0;
+  height: min(330px, calc(100vh - 280px));
+  min-height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.order-photo-note {
+  bottom: 24px;
+  color: #fff;
+  left: 0;
+  padding: 24px;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.order-photo-note .eyebrow {
+  color: #f2c879;
+}
+
+.order-photo-note h2 {
+  font-size: clamp(1.5rem, 2.4vw, 2.35rem);
+  margin-bottom: 10px;
+}
+
+.order-photo-note p:not(.eyebrow) {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.55;
+  margin-bottom: 0;
 }
 
 .order-form {
@@ -556,15 +612,22 @@ h3 {
   border: 1px solid rgba(31, 39, 34, 0.12);
   border-radius: 8px;
   display: grid;
-  gap: 18px;
-  padding: 28px;
+  gap: 12px;
+  padding: 20px;
+}
+
+.form-heading p:not(.eyebrow) {
+  color: #59685f;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 0;
 }
 
 .order-form label {
   color: #344139;
   display: grid;
   font-weight: 750;
-  gap: 8px;
+  gap: 6px;
 }
 
 .order-form input,
@@ -574,8 +637,8 @@ h3 {
   border: 1px solid rgba(31, 39, 34, 0.16);
   border-radius: 8px;
   color: #1f2722;
-  min-height: 48px;
-  padding: 12px 14px;
+  min-height: 42px;
+  padding: 9px 12px;
   resize: vertical;
   width: 100%;
 }
@@ -594,7 +657,7 @@ h3 {
 
 .form-row {
   display: grid;
-  gap: 16px;
+  gap: 12px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -608,9 +671,9 @@ h3 {
   border: 1px solid rgba(31, 39, 34, 0.12);
   border-radius: 8px;
   display: grid;
-  gap: 10px;
+  gap: 8px;
   margin: 2px 0 0;
-  padding: 16px;
+  padding: 12px;
 }
 
 .payment-options legend,
@@ -630,9 +693,9 @@ h3 {
   border-radius: 8px;
   cursor: pointer;
   display: grid;
-  gap: 12px;
+  gap: 10px;
   grid-template-columns: auto 1fr;
-  padding: 12px;
+  padding: 9px 10px;
 }
 
 .payment-option input,
@@ -660,6 +723,7 @@ h3 {
 .location-option small,
 .consent-option small {
   color: #68766e;
+  font-size: 0.82rem;
   line-height: 1.45;
 }
 
@@ -699,7 +763,24 @@ h3 {
   }
 
   .order-page {
+    background: #f6f3ed;
     grid-template-columns: 1fr;
+  }
+
+  .order-photo {
+    background:
+      linear-gradient(180deg, rgba(15, 23, 19, 0.06), rgba(15, 23, 19, 0.78)),
+      url("./assets/order-cemetery-path.png") center / cover;
+    height: 230px;
+  }
+
+  .order-copy {
+    position: static;
+  }
+
+  .order-photo {
+    height: 280px;
+    min-height: 0;
   }
 
   .hero {

@@ -196,30 +196,23 @@ onMounted(() => {
       <section class="section order-page">
         <div class="order-copy">
           <button class="back-link" type="button" @click="goTo('/')">{{ copy('Wróć na stronę główną', 'Back to home page') }}</button>
-          <p class="eyebrow">{{ copy('Zamówienie', 'Order') }}</p>
-          <h1>{{ copy('Formularz zamówienia', 'Order form') }}</h1>
-          <p>
-            {{ copy('Wypełnij dane lokalizacji, wybierz obszar realizacji i metodę płatności. Przy zleceniach niestandardowych użyj kodu otrzymanego od pracownika.', 'Fill in the location details, choose the service area and payment method. For custom orders, use the code provided by our staff.') }}
-          </p>
+          <div class="order-photo">
+            <div class="order-photo-note">
+              <p class="eyebrow">{{ copy('Zamówienie', 'Order') }}</p>
+              <h2>{{ copy('Kilka danych wystarczy, aby przygotować realizację.', 'A few details are enough to prepare the service.') }}</h2>
+              <p>{{ copy('Wypełnij dane lokalizacji, wybierz obszar realizacji i metodę płatności. Przy zleceniach niestandardowych użyj kodu otrzymanego od pracownika.', 'Fill in the location details, choose the service area and payment method. For custom orders, use the code provided by our staff.') }}</p>
+            </div>
+          </div>
         </div>
 
         <form class="order-form">
-          <label v-if="!isCustomServiceArea">
-            {{ copy('Pakiet', 'Package') }}
-            <select v-model="selectedPackageName">
-              <option value="Pełna opieka">Pełna opieka</option>
-              <option value="Odświeżenie">Odświeżenie</option>
-              <option value="Świąteczny">Świąteczny</option>
-              <option value="Regularne odświeżenie">Abonament Regularne odświeżenie</option>
-              <option value="Opieka całoroczna">Abonament Opieka całoroczna</option>
-              <option value="Premium świąteczny">Abonament Premium świąteczny</option>
-            </select>
-          </label>
-          <label v-else>
-            {{ copy('Kod niestandardowego zlecenia', 'Custom order code') }}
-            <input type="text" placeholder="np. PP-2026-001" />
-            <span class="field-note">{{ copy('Kod podaje pracownik po wcześniejszym ustaleniu szczegółów. Na jego podstawie w kolejnym etapie wczytamy cenę i zakres zlecenia.', 'The code is provided by our staff after the details are agreed. It will be used later to load the price and order scope.') }}</span>
-          </label>
+          <div class="form-heading">
+            <p class="eyebrow">{{ copy('Zamówienie', 'Order') }}</p>
+            <h1>{{ copy('Formularz zamówienia', 'Order form') }}</h1>
+            <p>
+              {{ copy('Wybierz obszar realizacji, pakiet i najważniejsze dane miejsca pamięci.', 'Choose the service area, package and key resting-place details.') }}
+            </p>
+          </div>
           <fieldset class="location-options">
             <legend>{{ copy('Obszar realizacji', 'Service area') }}</legend>
             <label class="location-option">
@@ -244,6 +237,22 @@ onMounted(() => {
               </span>
             </label>
           </fieldset>
+          <label v-if="!isCustomServiceArea">
+            {{ copy('Pakiet', 'Package') }}
+            <select v-model="selectedPackageName">
+              <option value="Pełna opieka">Pełna opieka</option>
+              <option value="Odświeżenie">Odświeżenie</option>
+              <option value="Świąteczny">Świąteczny</option>
+              <option value="Regularne odświeżenie">Abonament Regularne odświeżenie</option>
+              <option value="Opieka całoroczna">Abonament Opieka całoroczna</option>
+              <option value="Premium świąteczny">Abonament Premium świąteczny</option>
+            </select>
+          </label>
+          <label v-else>
+            {{ copy('Kod niestandardowego zlecenia', 'Custom order code') }}
+            <input type="text" placeholder="np. PP-2026-001" />
+            <span class="field-note">{{ copy('Kod podaje pracownik po wcześniejszym ustaleniu szczegółów. Na jego podstawie w kolejnym etapie wczytamy cenę i zakres zlecenia.', 'The code is provided by our staff after the details are agreed. It will be used later to load the price and order scope.') }}</span>
+          </label>
           <div class="form-row" :class="{ 'single-field': selectedServiceArea === 'warszawa' }">
             <label v-if="selectedServiceArea !== 'warszawa'">
               {{ copy('Miejscowość', 'Town') }}
