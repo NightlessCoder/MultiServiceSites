@@ -1,53 +1,74 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 const packages = [
   {
     group: 'Usługa jednorazowa',
     name: 'Odświeżenie',
-    price: 'od 89 zł',
+    priceWarsaw: 'od 89 zł',
+    priceArea: 'od 119 zł',
     description: 'Szybkie uporządkowanie grobu przed wizytą lub ważną datą.',
-    items: ['Usunięcie liści i piasku', 'Lekkie umycie płyty', 'Zapalenie jednego znicza']
+    items: ['Usunięcie liści i piasku', 'Lekkie umycie płyty', 'Dokumentacja zdjęciowa po każdej wizycie']
   },
   {
     group: 'Usługa jednorazowa',
     name: 'Pełna opieka',
-    price: 'od 149 zł',
+    priceWarsaw: 'od 149 zł',
+    priceArea: 'od 189 zł',
     description: 'Dokładniejsze sprzątanie z uporządkowaniem otoczenia grobu.',
-    items: ['Mycie płyty i elementów', 'Porządek wokół grobu', 'Zdjęcia przed i po']
+    items: ['Mycie płyty i elementów', 'Porządek wokół grobu', 'Dokumentacja zdjęciowa po każdej wizycie']
   },
   {
     group: 'Usługa jednorazowa',
     name: 'Świąteczny',
-    price: 'od 219 zł',
+    priceWarsaw: 'od 219 zł',
+    priceArea: 'od 269 zł',
     description: 'Pakiet na Wszystkich Świętych, rocznice i terminy o większym ruchu.',
-    items: ['Rezerwacja terminu', 'Kwiaty lub stroik sezonowy', 'Dwa znicze w zestawie']
+    items: ['Rezerwacja terminu', 'Kwiaty lub stroik sezonowy', 'Dokumentacja zdjęciowa po każdej wizycie']
   },
   {
     group: 'Abonament',
-    name: 'Spokojny',
-    price: '59 zł / mies.',
-    description: 'Podstawowa, regularna kontrola miejsca pamięci przez cały rok.',
-    items: ['1 wizyta miesięcznie', 'Krótki raport zdjęciowy', 'Stały termin wizyt']
+    name: 'Regularne odświeżenie',
+    priceWarsaw: '59 zł / mies.',
+    priceArea: '79 zł / mies.',
+    description: 'Stała, podstawowa opieka nad miejscem pamięci przez cały rok.',
+    items: ['Odświeżenie 1x w miesiącu', 'Usunięcie liści i lekkich zabrudzeń', 'Dokumentacja zdjęciowa po każdej wizycie']
   },
   {
     group: 'Abonament',
-    name: 'Rodzinny',
-    price: '99 zł / mies.',
-    description: 'Częstsza opieka i większa elastyczność przy terminach rodzinnych.',
-    items: ['2 wizyty miesięcznie', 'Priorytet przed świętami', 'Znicz przy każdej wizycie']
+    name: 'Opieka całoroczna',
+    priceWarsaw: '99 zł / mies.',
+    priceArea: '129 zł / mies.',
+    description: 'Regularne odświeżanie połączone z dokładniejszą opieką w ciągu roku.',
+    items: ['Odświeżenie 1x w miesiącu', 'Pełna opieka 2x do roku', 'Dokumentacja zdjęciowa po każdej wizycie']
   },
   {
     group: 'Abonament',
-    name: 'Całoroczny',
-    price: '149 zł / mies.',
-    description: 'Najpełniejsza opieka dla rodzin, które mieszkają daleko od cmentarza.',
-    items: ['3 wizyty miesięcznie', 'Sezonowe dekoracje', 'Rozszerzony raport po usłudze']
+    name: 'Premium świąteczny',
+    priceWarsaw: '149 zł / mies.',
+    priceArea: '189 zł / mies.',
+    description: 'Najpełniejszy wariant z dodatkową oprawą w okolicy wskazanych dat i świąt.',
+    items: ['Odświeżenie 1x w miesiącu', 'Pełna opieka 2x do roku w wybranym terminie', 'Znicze i kwiaty 2x do roku', 'Dokumentacja zdjęciowa po każdej wizycie']
   }
 ]
 
 const oneTimePackages = packages.filter((item) => item.group === 'Usługa jednorazowa')
 const subscriptionPackages = packages.filter((item) => item.group === 'Abonament')
+
+const paymentMethods = [
+  {
+    name: 'BLIK',
+    description: 'Szybka płatność kodem z aplikacji bankowej dla klientów w Polsce.'
+  },
+  {
+    name: 'Przelew tradycyjny',
+    description: 'Dane do przelewu po złożeniu zamówienia, dobre przy indywidualnych ustaleniach.'
+  },
+  {
+    name: 'PayPal lub karta',
+    description: 'Wygodna opcja dla osób mieszkających za granicą.'
+  }
+]
 
 const steps = [
   {
@@ -75,11 +96,32 @@ const steps = [
 const getRoute = () => window.location.hash.replace('#', '') || '/'
 
 const currentPath = ref(getRoute())
+const selectedServiceArea = ref('warszawa')
+const selectedPackageArea = ref('warszawa')
+const selectedPackageName = ref('Pełna opieka')
+const selectedLanguage = ref('pl')
+
+const selectedPackage = computed(() => packages.find((item) => item.name === selectedPackageName.value))
+const isCustomServiceArea = computed(() => selectedServiceArea.value === 'custom')
+const isSubscription = computed(() => selectedPackage.value?.group === 'Abonament')
+const needsTwoYearlyDates = computed(() => ['Opieka całoroczna', 'Premium świąteczny'].includes(selectedPackageName.value))
+const needsOneTimeDate = computed(() => !isSubscription.value)
+const isPremiumSubscription = computed(() => selectedPackageName.value === 'Premium świąteczny')
+const displayPrice = (item) => selectedPackageArea.value === 'warszawa-plus-30' ? item.priceArea : item.priceWarsaw
+const copy = (pl, en) => selectedLanguage.value === 'en' ? en : pl
+const toggleLanguage = () => {
+  selectedLanguage.value = selectedLanguage.value === 'pl' ? 'en' : 'pl'
+}
 
 const goTo = (path) => {
   window.location.hash = path
   currentPath.value = path
   window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+const goToOrder = (packageName) => {
+  selectedPackageName.value = packageName
+  goTo('/zamowienie')
 }
 
 const goHomeSection = (sectionId) => {
@@ -115,56 +157,119 @@ onMounted(() => {
         <span>PłomykPamięci</span>
       </button>
       <nav class="nav-links" aria-label="Główne">
-        <button type="button" @click="goHomeSection('pakiety')">Pakiety</button>
-        <button type="button" @click="goHomeSection('jak-to-dziala')">Jak to działa</button>
-        <button type="button" @click="goTo('/zamowienie')">Zamów</button>
-        <button type="button" @click="goHomeSection('kontakt')">Kontakt</button>
+        <button type="button" @click="goHomeSection('pakiety')">{{ copy('Pakiety', 'Packages') }}</button>
+        <button type="button" @click="goHomeSection('jak-to-dziala')">{{ copy('Jak to działa', 'How it works') }}</button>
+        <button type="button" @click="goTo('/zamowienie')">{{ copy('Zamów', 'Order') }}</button>
+        <button type="button" @click="goHomeSection('kontakt')">{{ copy('Kontakt', 'Contact') }}</button>
+        <button class="language-toggle" type="button" @click="toggleLanguage">{{ selectedLanguage === 'pl' ? 'EN' : 'PL' }}</button>
       </nav>
     </header>
 
     <template v-if="currentPath === '/zamowienie'">
       <section class="section order-page">
         <div class="order-copy">
-          <button class="back-link" type="button" @click="goTo('/')">Wróć na stronę główną</button>
-          <p class="eyebrow">Zamówienie</p>
-          <h1>Formularz pod przyszłą integrację z backendem i płatnościami</h1>
+          <button class="back-link" type="button" @click="goTo('/')">{{ copy('Wróć na stronę główną', 'Back to home page') }}</button>
+          <p class="eyebrow">{{ copy('Zamówienie', 'Order') }}</p>
+          <h1>{{ copy('Formularz zamówienia', 'Order form') }}</h1>
           <p>
-            Pola są przygotowane jako widok. Po akceptacji layoutu można dodać walidację,
-            zapis zamówienia w C#, koszyk oraz operatora płatności.
+            {{ copy('Wypełnij dane lokalizacji, wybierz obszar realizacji i metodę płatności. Przy zleceniach niestandardowych użyj kodu otrzymanego od pracownika.', 'Fill in the location details, choose the service area and payment method. For custom orders, use the code provided by our staff.') }}
           </p>
         </div>
 
         <form class="order-form">
-          <label>
-            Pakiet
-            <select>
-              <option>Pełna opieka</option>
-              <option>Odświeżenie</option>
-              <option>Świąteczny</option>
-              <option>Abonament Spokojny</option>
-              <option>Abonament Rodzinny</option>
-              <option>Abonament Całoroczny</option>
+          <label v-if="!isCustomServiceArea">
+            {{ copy('Pakiet', 'Package') }}
+            <select v-model="selectedPackageName">
+              <option value="Pełna opieka">Pełna opieka</option>
+              <option value="Odświeżenie">Odświeżenie</option>
+              <option value="Świąteczny">Świąteczny</option>
+              <option value="Regularne odświeżenie">Abonament Regularne odświeżenie</option>
+              <option value="Opieka całoroczna">Abonament Opieka całoroczna</option>
+              <option value="Premium świąteczny">Abonament Premium świąteczny</option>
             </select>
           </label>
-          <label>
-            Miasto i cmentarz
-            <input type="text" placeholder="np. Kraków, Cmentarz Rakowicki" />
+          <label v-else>
+            {{ copy('Kod niestandardowego zlecenia', 'Custom order code') }}
+            <input type="text" placeholder="np. PP-2026-001" />
+            <span class="field-note">{{ copy('Kod podaje pracownik po wcześniejszym ustaleniu szczegółów. Na jego podstawie w kolejnym etapie wczytamy cenę i zakres zlecenia.', 'The code is provided by our staff after the details are agreed. It will be used later to load the price and order scope.') }}</span>
           </label>
-          <label>
-            Dane lokalizacji grobu
-            <textarea rows="4" placeholder="Sektor, rząd, numer lub opis dojścia"></textarea>
-          </label>
-          <div class="form-row">
-            <label>
-              Termin
-              <input type="date" />
+          <fieldset class="location-options">
+            <legend>{{ copy('Obszar realizacji', 'Service area') }}</legend>
+            <label class="location-option">
+              <input v-model="selectedServiceArea" type="radio" name="service-area" value="warszawa" />
+              <span>
+                <strong>{{ copy('Warszawa', 'Warsaw') }}</strong>
+                <small>{{ copy('Najkorzystniejsza opcja dla usług realizowanych na terenie miasta.', 'Best option for services carried out within Warsaw.') }}</small>
+              </span>
+            </label>
+            <label class="location-option">
+              <input v-model="selectedServiceArea" type="radio" name="service-area" value="warszawa-plus-30" />
+              <span>
+                <strong>{{ copy('Warszawa + 30 km', 'Warsaw + 30 km') }}</strong>
+                <small>{{ copy('Opcja dla cmentarzy pod Warszawą, z dojazdem do 30 km od miasta.', 'For cemeteries near Warsaw, up to 30 km from the city.') }}</small>
+              </span>
+            </label>
+            <label class="location-option">
+              <input v-model="selectedServiceArea" type="radio" name="service-area" value="custom" />
+              <span>
+                <strong>{{ copy('Ustalenia niestandardowe', 'Custom arrangements') }}</strong>
+                <small>{{ copy('Przed wyborem tej opcji skontaktuj się z nami, aby ustalić możliwość realizacji, termin i wycenę.', 'Contact us before choosing this option so we can confirm availability, timing and pricing.') }}</small>
+              </span>
+            </label>
+          </fieldset>
+          <div class="form-row" :class="{ 'single-field': selectedServiceArea === 'warszawa' }">
+            <label v-if="selectedServiceArea !== 'warszawa'">
+              {{ copy('Miejscowość', 'Town') }}
+              <input type="text" placeholder="np. Piaseczno, Marki, Pruszków" />
             </label>
             <label>
-              Kontakt
-              <input type="tel" placeholder="+48 ..." />
+              {{ copy('Nazwa cmentarza', 'Cemetery name') }}
+              <input type="text" placeholder="np. Cmentarz Bródnowski" />
             </label>
           </div>
-          <button type="button">Przejdź do podsumowania</button>
+          <label>
+            {{ copy('Dane lokalizacji grobu', 'Grave location details') }}
+            <textarea rows="4" placeholder="Sektor, kwatera, rząd, numer grobu lub opis dojścia"></textarea>
+            <span class="field-note">{{ copy('Im dokładniejszy opis, tym łatwiej potwierdzić możliwość realizacji i uniknąć pomyłki na cmentarzu.', 'The more precise the description, the easier it is to confirm the service and avoid mistakes at the cemetery.') }}</span>
+          </label>
+          <fieldset v-if="!isCustomServiceArea" class="schedule-options">
+            <legend>{{ copy('Terminy realizacji', 'Service dates') }}</legend>
+            <div v-if="needsOneTimeDate" class="form-row single-field">
+              <label>
+                {{ copy('Preferowany termin usługi', 'Preferred service date') }}
+                <input type="date" />
+                <span class="field-note">{{ copy('Dokładny termin potwierdzimy po sprawdzeniu dostępności.', 'We will confirm the exact date after checking availability.') }}</span>
+              </label>
+            </div>
+            <div v-else-if="needsTwoYearlyDates" class="form-row">
+              <label>
+                {{ copy('Pierwszy termin pełnej opieki', 'First full-care date') }}
+                <input type="date" />
+              </label>
+              <label>
+                {{ copy('Drugi termin pełnej opieki', 'Second full-care date') }}
+                <input type="date" />
+              </label>
+              <p class="field-note schedule-note">{{ copy('Miesięczne odświeżenia odbywają się regularnie przez cały rok. Konkretne dni wizyt ustalimy po przyjęciu zamówienia.', 'Monthly refresh visits are carried out regularly throughout the year. Specific visit days will be agreed after the order is accepted.') }}</p>
+              <p v-if="isPremiumSubscription" class="field-note schedule-note">{{ copy('W pakiecie Premium znicze i kwiaty 2x do roku przygotujemy w okolicy wskazanych terminów.', 'In the Premium package, candles and flowers twice a year will be prepared around the selected dates.') }}</p>
+            </div>
+            <p v-else class="field-note schedule-note">{{ copy('Ten abonament obejmuje regularne odświeżenie 1x w miesiącu. Dzień cyklicznej wizyty ustalimy po przyjęciu zamówienia.', 'This subscription includes a regular refresh once a month. The recurring visit day will be agreed after the order is accepted.') }}</p>
+          </fieldset>
+          <label>
+            {{ copy('Kontakt', 'Contact') }}
+            <input type="tel" placeholder="+48 ..." />
+          </label>
+          <fieldset class="payment-options">
+            <legend>{{ copy('Metoda płatności', 'Payment method') }}</legend>
+            <label v-for="method in paymentMethods" :key="method.name" class="payment-option">
+              <input type="radio" name="payment" :value="method.name" />
+              <span>
+                <strong>{{ method.name }}</strong>
+                <small>{{ method.description }}</small>
+              </span>
+            </label>
+          </fieldset>
+          <button type="button">{{ copy('Przejdź do podsumowania', 'Continue to summary') }}</button>
         </form>
       </section>
     </template>
@@ -172,27 +277,43 @@ onMounted(() => {
     <template v-else>
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Opieka nad grobami z potwierdzeniem zdjęciowym</p>
-          <h1>Zadbamy o miejsce pamięci Twoich bliskich z troską i szacunkiem.</h1>
+          <p class="eyebrow">{{ copy('Opieka nad grobami z potwierdzeniem zdjęciowym', 'Grave care with photo confirmation') }}</p>
+          <h1>{{ copy('Zadbamy o miejsce pamięci Twoich bliskich z troską i szacunkiem.', 'We care for your loved ones’ resting place with respect and attention.') }}</h1>
           <p class="lead">
-            Zamów jednorazowe sprzątanie grobu albo stałą opiekę, gdy nie możesz odwiedzić cmentarza osobiście.
-            Po wykonaniu usługi otrzymasz potwierdzenie oraz zdjęcia uporządkowanego miejsca.
+            {{ copy('Zamów jednorazowe sprzątanie grobu albo stałą opiekę, gdy nie możesz odwiedzić cmentarza osobiście. Po wykonaniu usługi otrzymasz potwierdzenie oraz zdjęcia uporządkowanego miejsca.', 'Order one-time grave cleaning or ongoing care when you cannot visit the cemetery in person. After the service, you receive confirmation and photos of the cared-for place.') }}
           </p>
+          <p class="service-area">{{ copy('Usługi realizujemy na terenie Warszawy i do 30 km od miasta. Dalsze lokalizacje wymagają indywidualnych ustaleń.', 'Services are provided in Warsaw and up to 30 km from the city. Further locations require individual arrangements.') }}</p>
           <div class="hero-actions">
-            <button class="button primary" type="button" @click="goTo('/zamowienie')">Przejdź do zamówienia</button>
-            <button class="button secondary" type="button" @click="goHomeSection('pakiety')">Porównaj pakiety</button>
+            <button class="button primary" type="button" @click="goTo('/zamowienie')">{{ copy('Przejdź do zamówienia', 'Start order') }}</button>
+            <button class="button secondary" type="button" @click="goHomeSection('pakiety')">{{ copy('Porównaj pakiety', 'Compare packages') }}</button>
           </div>
         </div>
       </section>
 
       <section id="pakiety" class="section packages-section">
         <div class="section-heading">
-          <p class="eyebrow">Pakiety</p>
-          <h2>Prosty wybór usługi</h2>
-          <p>Najpierw wybierz jednorazowe sprzątanie, a jeśli potrzebujesz stałej opieki, porównaj abonamenty.</p>
+          <p class="eyebrow">{{ copy('Pakiety', 'Packages') }}</p>
+          <h2>{{ copy('Prosty wybór usługi', 'Choose a service') }}</h2>
+          <p>{{ copy('Wybierz jednorazową usługę albo stałą opiekę dopasowaną do miejsca i częstotliwości wizyt.', 'Choose a one-time service or ongoing care matched to the location and visit frequency.') }}</p>
         </div>
 
-        <div class="package-row">
+        <div class="area-tabs" role="tablist" aria-label="Obszar realizacji pakietów">
+          <button :class="{ active: selectedPackageArea === 'warszawa' }" type="button" @click="selectedPackageArea = 'warszawa'">{{ copy('Warszawa', 'Warsaw') }}</button>
+          <button :class="{ active: selectedPackageArea === 'warszawa-plus-30' }" type="button" @click="selectedPackageArea = 'warszawa-plus-30'">{{ copy('Warszawa +30 km', 'Warsaw +30 km') }}</button>
+          <button :class="{ active: selectedPackageArea === 'custom' }" type="button" @click="selectedPackageArea = 'custom'">{{ copy('Ustalenia niestandardowe', 'Custom arrangements') }}</button>
+        </div>
+
+        <div v-if="selectedPackageArea === 'custom'" class="custom-package-note">
+          <p class="eyebrow">{{ copy('Indywidualna wycena', 'Individual pricing') }}</p>
+          <h3>{{ copy('Skontaktuj się z nami przed wyborem pakietu.', 'Contact us before choosing a package.') }}</h3>
+          <p>
+            {{ copy('Dla lokalizacji poza Warszawą i obszarem do 30 km konieczne jest wcześniejsze ustalenie możliwości realizacji, terminu, kosztów dojazdu oraz szczegółów zamówienia.', 'For locations outside Warsaw and the 30 km area, we need to confirm availability, timing, travel cost and order details in advance.') }}
+          </p>
+          <button type="button" @click="goHomeSection('kontakt')">{{ copy('Przejdź do kontaktu', 'Go to contact') }}</button>
+        </div>
+
+        <div v-else class="package-area-content">
+          <div class="package-row">
           <div class="package-row-heading">
             <span>Jednorazowo</span>
             <p>Na konkretną datę, święto albo jedną wizytę kontrolną.</p>
@@ -204,11 +325,11 @@ onMounted(() => {
                 <h3>{{ item.name }}</h3>
                 <p>{{ item.description }}</p>
               </div>
-              <strong>{{ item.price }}</strong>
+              <strong>{{ displayPrice(item) }}</strong>
               <ul>
                 <li v-for="feature in item.items" :key="feature">{{ feature }}</li>
               </ul>
-              <button type="button" @click="goTo('/zamowienie')">Wybierz pakiet</button>
+              <button type="button" @click="goToOrder(item.name)">Wybierz pakiet</button>
             </article>
           </div>
         </div>
@@ -225,13 +346,14 @@ onMounted(() => {
                 <h3>{{ item.name }}</h3>
                 <p>{{ item.description }}</p>
               </div>
-              <strong>{{ item.price }}</strong>
+              <strong>{{ displayPrice(item) }}</strong>
               <ul>
                 <li v-for="feature in item.items" :key="feature">{{ feature }}</li>
               </ul>
-              <button type="button" @click="goTo('/zamowienie')">Wybierz abonament</button>
+              <button type="button" @click="goToOrder(item.name)">Wybierz abonament</button>
             </article>
           </div>
+        </div>
         </div>
       </section>
 
