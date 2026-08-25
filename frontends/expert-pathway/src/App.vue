@@ -5,9 +5,6 @@ import hotelTrainingHero from './assets/hotel-training-hero-v2.png'
 const canvas = ref(null)
 const active = ref(0)
 const activeGroup = ref('IT i technologia')
-const searchOpen = ref(false)
-const search = ref('')
-const menuOpen = ref(false)
 const progress = ref(0)
 const sent = ref(false)
 const inquiryOpen = ref(false)
@@ -49,7 +46,6 @@ const groups = [
   {name:'ESG i środowisko',code:'06',icon:'○',text:'Raportowanie, dane i odpowiedzialność'}
 ]
 const current = computed(() => courses[active.value])
-const results = computed(() => courses.filter(c => `${c.title} ${c.category}`.toLowerCase().includes(search.value.toLowerCase())))
 const groupCourses = computed(() => courses.filter(c => c.group === activeGroup.value))
 
 const select = (index) => { active.value=index; activeGroup.value=courses[index].group; document.querySelector('#experience')?.scrollIntoView({behavior:'smooth'}) }
@@ -72,17 +68,13 @@ onMounted(() => {
     <div class="noise"></div><div class="scroll-progress" :style="{width:`${progress}%`}"></div>
     <header class="hud">
       <a class="logo imperial-logo" href="#top"><svg viewBox="0 0 64 64" aria-hidden="true"><path class="logo-crown" d="M14 25 11 12l12 8 9-13 9 13 12-8-3 13"/><path class="logo-book" d="M10 29c9-2 16 0 22 6 6-6 13-8 22-6v24c-9-2-16 0-22 5-6-5-13-7-22-5V29Z"/><path class="logo-spine" d="M32 35v23M15 35c7-1 12 1 17 5M49 35c-7-1-12 1-17 5"/></svg><span>IMPERIAL<br><b>ACADEMY</b></span></a>
-      <div class="hud-center"><span>WIEDZA</span><i></i><span>DECYZJA</span><i></i><span>DZIAŁANIE</span></div>
-      <div class="hud-actions"><button @click="searchOpen=true">SZUKAJ <b>⌕</b></button><button @click="menuOpen=!menuOpen">MENU <b>≡</b></button></div>
     </header>
-    <nav :class="['overlay-menu',{open:menuOpen}]"><button @click="menuOpen=false">×</button><a href="#calendar" @click="menuOpen=false">Kategorie</a><a href="#trainings" @click="menuOpen=false">Szkolenia</a><a href="#method" @click="menuOpen=false">Metoda</a><a href="#contact" @click="menuOpen=false">Kontakt</a></nav>
-    <div v-if="searchOpen" class="search-layer"><button @click="searchOpen=false">×</button><label><span>⌕</span><input v-model="search" autofocus placeholder="Czego chcesz się nauczyć?"/></label><div><button v-for="course in results" :key="course.title" @click="select(courses.indexOf(course));searchOpen=false"><small>{{course.date}}.{{course.month}}</small><strong>{{course.title}}</strong><span>→</span></button></div></div>
 
     <main id="top">
       <section class="portal">
-        <div class="hero-film"><img :src="hotelTrainingHero" alt="Szkolenie biznesowe w eleganckiej sali konferencyjnej hotelu"/><div class="film-shade"></div><span class="film-label"><i></i> IMPERIAL ACADEMY / SESSION 01</span><button aria-label="Przejdź do opisu naszego podejścia" @click="document.querySelector('#method')?.scrollIntoView({behavior:'smooth'})"><b>▶</b><span>POZNAJ NASZE<br>PODEJŚCIE</span></button></div>
-        <div class="portal-copy"><span class="chapter">IMPERIAL ACADEMY / PROGRAMY</span><h1 class="hero-claim">Budujemy imperia<br><em>razem z naszymi klientami.</em></h1><p>Specjalistyczne szkolenia dla ludzi, którzy podejmują decyzje w świecie ciągłej zmiany.</p><a href="#calendar">POZNAJ PROGRAMY <i>↓</i></a></div>
-        <div class="portal-foot"><span>PRZEWIŃ, ABY ODKRYĆ</span><i></i><p><b>PROGRAM OTWARTY LUB ZAMKNIĘTY</b> / ONLINE I STACJONARNIE</p></div>
+        <div class="hero-film"><img :src="hotelTrainingHero" alt="Szkolenie biznesowe w eleganckiej sali konferencyjnej hotelu"/><div class="film-shade"></div><button aria-label="Przejdź do opisu naszego podejścia" @click="document.querySelector('#method')?.scrollIntoView({behavior:'smooth'})"><b>▶</b><span>POZNAJ NASZE<br>PODEJŚCIE</span></button></div>
+        <div class="portal-copy"><h1 class="hero-claim">Budujemy imperia<br><em>razem z naszymi klientami.</em></h1><p>Specjalistyczne szkolenia dla ludzi, którzy podejmują decyzje w świecie ciągłej zmiany.</p><div class="training-options"><strong>Programy otwarte i zamknięte</strong><span>Online lub stacjonarnie</span></div><a href="#calendar">POZNAJ PROGRAMY <i>↓</i></a></div>
+        <div class="portal-foot"><span>PRZEWIŃ, ABY ODKRYĆ</span><i></i></div>
       </section>
 
       <section id="calendar" class="calendar-scene category-scene"><header><h2 class="category-title">KATEGORIE</h2></header><div class="group-grid"><button v-for="group in groups" :key="group.name" :class="{active:activeGroup===group.name}" @click="selectGroup(group.name)"><svg class="category-art" viewBox="0 0 180 100" aria-hidden="true">
