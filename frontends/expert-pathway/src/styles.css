@@ -77,3 +77,14 @@
 /* Brighter, welcoming opening scene */
 .hero-film{background:#dbe9f3}.hero-film img{object-position:center center;filter:saturate(.92) brightness(1.04)}.film-shade{background:linear-gradient(90deg,rgba(7,28,57,.9) 0%,rgba(7,31,64,.78) 25%,rgba(11,43,78,.43) 43%,rgba(18,53,82,.08) 68%,rgba(255,255,255,.03) 100%),linear-gradient(0deg,rgba(7,26,52,.35),transparent 45%)}.hud{background:linear-gradient(180deg,rgba(5,25,54,.76),rgba(5,25,54,.2))}.portal h1,.portal h1 em{color:#fff;text-shadow:0 3px 22px rgba(2,15,35,.55)}.portal-copy>p{color:#f1f6fb;text-shadow:0 2px 13px rgba(2,15,35,.8)}
 @media(max-width:650px){.hero-film img{object-position:58% center}.film-shade{background:linear-gradient(90deg,rgba(5,24,52,.9),rgba(8,36,70,.55)),linear-gradient(0deg,rgba(5,24,52,.55),transparent 48%)}}
+
+/* ImperialAcademy crown-and-book signature */
+.imperial-logo{gap:12px;font-size:10px;letter-spacing:.09em}.imperial-logo svg{width:52px;height:52px;overflow:visible;fill:none;filter:none}.imperial-logo svg path{fill:none;stroke-linecap:round;stroke-linejoin:round}.imperial-logo .logo-crown{stroke:#7ce8ff;stroke-width:2.4}.imperial-logo .logo-book{stroke:#fff;stroke-width:2.3}.imperial-logo .logo-spine{stroke:#9fdff1;stroke-width:1.35}.imperial-logo span{line-height:1.22;color:#fff}.imperial-logo b{color:#7ce8ff;font-weight:700}
+@media(max-width:650px){.imperial-logo{gap:8px;font-size:8px;letter-spacing:.06em}.imperial-logo svg{width:42px;height:42px}}
+
+/* Persistent top-left brand visibility */
+.hud{position:fixed;z-index:55}.imperial-logo{justify-self:start;width:max-content;padding:7px 13px 7px 8px;border:1px solid rgba(124,232,255,.28);border-radius:7px;background:rgba(5,25,54,.72);box-shadow:0 8px 28px rgba(3,15,35,.18);backdrop-filter:blur(10px)}.imperial-logo:hover{border-color:rgba(124,232,255,.65);background:rgba(5,25,54,.9)}
+@media(max-width:650px){.hud{padding-left:12px}.imperial-logo{padding:5px 9px 5px 5px}}
+
+.portal .hero-claim{font-size:clamp(54px,6.7vw,118px);line-height:.86}
+@media(max-width:650px){.portal .hero-claim{font-size:46px;line-height:.9}}

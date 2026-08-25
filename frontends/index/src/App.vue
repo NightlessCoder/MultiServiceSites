@@ -3,7 +3,7 @@ import heroCzystePietro from './assets/hero-czyste-pietro.png'
 import heroOdplamieni from './assets/hero-odplamieni.png'
 import heroPlomyk from './assets/hero-plomyk.png'
 import heroWoda from './assets/hero-woda.png'
-import heroExpertPathway from './assets/hero-expert-pathway.png'
+import heroImperialAcademy from './assets/hero-imperial-academy.png'
 
 const projects = [
   {
@@ -43,12 +43,12 @@ const projects = [
     tone: 'water'
   },
   {
-    name: 'Expert Pathway',
-    domain: 'expertpathway.pl',
+    name: 'ImperialAcademy',
+    domain: 'imperialacademy.pl',
     text: 'Nowoczesne szkolenia dla firm i zespołów.',
-    path: './expertpathway/',
+    path: './imperialacademy/',
     localUrl: 'http://127.0.0.1:5178',
-    image: heroExpertPathway,
+    image: heroImperialAcademy,
     tone: 'expert'
   }
 ]

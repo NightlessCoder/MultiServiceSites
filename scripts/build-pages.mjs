@@ -11,7 +11,7 @@ const frontends = [
   { name: 'czyste-pietro', output: 'czyste-pietro' },
   { name: 'odplamieni', output: 'odplamieni' },
   { name: 'pod-cisnieniem', output: 'wodapodcisnieniem' },
-  { name: 'expert-pathway', output: 'expertpathway' }
+  { name: 'expert-pathway', output: 'imperialacademy' }
 ]
 
 const runNpm = (args, cwd) => {
