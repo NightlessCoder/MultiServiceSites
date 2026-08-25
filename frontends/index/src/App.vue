@@ -3,6 +3,7 @@ import heroCzystePietro from './assets/hero-czyste-pietro.png'
 import heroOdplamieni from './assets/hero-odplamieni.png'
 import heroPlomyk from './assets/hero-plomyk.png'
 import heroWoda from './assets/hero-woda.png'
+import heroExpertPathway from './assets/hero-expert-pathway.png'
 
 const projects = [
   {
@@ -40,6 +41,15 @@ const projects = [
     localUrl: 'http://127.0.0.1:5176',
     image: heroWoda,
     tone: 'water'
+  },
+  {
+    name: 'Expert Pathway',
+    domain: 'expertpathway.pl',
+    text: 'Nowoczesne szkolenia dla firm i zespołów.',
+    path: './expertpathway/',
+    localUrl: 'http://127.0.0.1:5178',
+    image: heroExpertPathway,
+    tone: 'expert'
   }
 ]
 

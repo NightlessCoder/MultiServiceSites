@@ -9,13 +9,15 @@
     "dev:odplamieni": "npm --prefix frontends/odplamieni run dev",
     "dev:wodapodcisnieniem": "npm --prefix frontends/pod-cisnieniem run dev",
     "dev:pod-cisnieniem": "npm --prefix frontends/pod-cisnieniem run dev",
-    "build": "npm run build:index && npm run build:plomyk && npm run build:czyste-pietro && npm run build:odplamieni && npm run build:pod-cisnieniem",
+    "dev:expert-pathway": "npm --prefix frontends/expert-pathway run dev",
+    "build": "npm run build:index && npm run build:plomyk && npm run build:czyste-pietro && npm run build:odplamieni && npm run build:pod-cisnieniem && npm run build:expert-pathway",
     "build:index": "npm --prefix frontends/index run build",
     "build:plomyk": "npm --prefix frontends/plomyk-pamieci run build",
     "build:czyste-pietro": "npm --prefix frontends/czyste-pietro run build",
     "build:odplamieni": "npm --prefix frontends/odplamieni run build",
     "build:wodapodcisnieniem": "npm --prefix frontends/pod-cisnieniem run build",
     "build:pod-cisnieniem": "npm --prefix frontends/pod-cisnieniem run build",
+    "build:expert-pathway": "npm --prefix frontends/expert-pathway run build",
     "build:pages": "node scripts/build-pages.mjs",
     "api": "dotnet run --project backend/SwiatelkoPamieci.Api"
   }

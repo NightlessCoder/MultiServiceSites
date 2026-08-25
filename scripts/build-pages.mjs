@@ -10,7 +10,8 @@ const frontends = [
   { name: 'plomyk-pamieci', output: 'plomyk-pamieci' },
   { name: 'czyste-pietro', output: 'czyste-pietro' },
   { name: 'odplamieni', output: 'odplamieni' },
-  { name: 'pod-cisnieniem', output: 'wodapodcisnieniem' }
+  { name: 'pod-cisnieniem', output: 'wodapodcisnieniem' },
+  { name: 'expert-pathway', output: 'expertpathway' }
 ]
 
 const runNpm = (args, cwd) => {

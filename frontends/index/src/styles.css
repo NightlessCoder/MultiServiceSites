@@ -24,10 +24,14 @@ body {
 .quad-shell {
   background: #fff;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1.15fr repeat(2, minmax(0, 1fr));
   grid-template-rows: repeat(2, minmax(0, 1fr));
   height: 100vh;
   overflow: hidden;
+}
+
+.project-tile:first-child {
+  grid-row: span 2;
 }
 
 .project-tile {
@@ -117,13 +121,21 @@ p {
   color: #08779e;
 }
 
+.expert .tile-domain {
+  color: #155bd5;
+}
+
 @media (max-width: 760px) {
   .quad-shell {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, minmax(220px, 1fr));
+    grid-template-rows: repeat(5, minmax(220px, 1fr));
     height: auto;
     min-height: 100vh;
     overflow: visible;
+  }
+
+  .project-tile:first-child {
+    grid-row: auto;
   }
 
   .project-tile {
