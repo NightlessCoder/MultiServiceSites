@@ -67,7 +67,7 @@ onMounted(() => {
     <canvas ref="canvas" class="network" aria-hidden="true"></canvas>
     <div class="noise"></div><div class="scroll-progress" :style="{width:`${progress}%`}"></div>
     <header class="hud">
-      <a class="logo imperial-logo" href="#top"><svg viewBox="0 0 260 235" aria-hidden="true"><path class="logo-crown" d="M52 77 45 24l46 31 39-50 39 50 46-31-7 53"/><path class="logo-book" d="M20 105q62-25 110 21 48-46 110-21v93q-62-24-110 28-48-52-110-28Z"/><path class="logo-spine" d="M130 139v76"/><path class="logo-text-lines" d="M49 139q33-4 63 15m36 0q30-19 63-15M49 171q33-4 63 15m36 0q30-19 63-15"/></svg><span>IMPERIAL<br><b>ACADEMY</b></span></a>
+      <a class="logo imperial-logo" href="#top"><svg viewBox="0 0 260 235" aria-hidden="true"><path class="logo-crown" d="M52 77 45 24l46 31 39-50 39 50 46-31-7 53"/><path class="logo-book" d="M20 105q62-25 110 21 48-46 110-21v93q-62-24-110 28-48-52-110-28Z"/><path class="logo-spine" d="M130 139v76"/><path class="logo-text-lines" d="M49 139q33-4 63 15m36 0q30-19 63-15M49 171q33-4 63 15m36 0q30-19 63-15"/></svg><span><strong>IMPERIAL</strong><br><b>ACADEMY</b></span></a>
     </header>
 
     <main id="top">
