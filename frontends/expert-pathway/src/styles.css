@@ -89,5 +89,15 @@
 .portal .hero-claim{font-size:clamp(54px,6.7vw,118px);line-height:.86}
 @media(max-width:650px){.portal .hero-claim{font-size:46px;line-height:.9}}
 
-.training-options{display:flex;align-items:center;gap:12px;margin-top:25px;color:#071a34}.training-options strong,.training-options span{padding:12px 16px;border:1px solid #6fe4ff;border-radius:4px;background:#6fe4ff;font-size:13px;font-weight:700;line-height:1.3;box-shadow:0 10px 28px rgba(54,185,229,.18)}
-@media(max-width:650px){.training-options{align-items:stretch;flex-direction:column;gap:8px;margin-top:20px}.training-options strong,.training-options span{padding:10px 12px;font-size:11px}.portal-copy>a{margin-top:22px}}
+.training-options{display:flex;align-items:center;gap:16px;margin-top:24px;color:#eaf7fb;font-size:14px;line-height:1.4}.training-options strong,.training-options span{font-weight:600}.training-options span{display:flex;align-items:center;gap:16px}.training-options span::before{content:'';width:1px;height:18px;background:rgba(124,232,255,.55)}
+@media(max-width:650px){.training-options{align-items:flex-start;flex-direction:column;gap:7px;margin-top:20px;font-size:12px}.training-options span{gap:8px}.training-options span::before{width:18px;height:1px}.portal-copy>a{margin-top:22px}}
+
+/* Imperial gold accents */
+:root{--gold:#b8860b;--gold-bright:#b8860b;--gold-soft:rgba(184,134,11,.2)}
+.imperial-logo svg .logo-crown{stroke:#b8860b!important;fill:none!important;filter:drop-shadow(0 1px 2px rgba(0,0,0,.28))}.imperial-logo b{color:var(--gold-bright)}.imperial-logo{border-color:rgba(184,134,11,.42);box-shadow:0 8px 28px rgba(3,15,35,.18),inset 0 0 18px rgba(184,134,11,.04)}.imperial-logo:hover{border-color:rgba(184,134,11,.78)}
+.scroll-progress{background:var(--gold)}.portal h1 em{color:var(--gold)}.portal-copy>.chapter,.film-label b{color:var(--gold)}.film-label i{background:var(--gold);box-shadow:0 0 10px rgba(184,134,11,.45)}.portal-copy>a{background:var(--gold);box-shadow:0 12px 35px rgba(184,134,11,.24)}.portal-copy>a:hover{background:#c99a25}.training-options span::before{background:rgba(184,134,11,.62)}
+.calendar-scene .chapter,.training-browser .chapter,.program-scene>header .chapter,.contact-scene .chapter,.form-intro>span{color:var(--gold)}.group-grid button:hover,.group-grid button.active{box-shadow:0 14px 35px rgba(40,82,140,.09),inset 0 -3px var(--gold)}.program-scene aside strong{color:var(--gold)}.program-scene aside>a{background:var(--gold)}.legal-links a:hover,.legal-links a:focus-visible,.world>footer b{color:var(--gold)}
+
+/* Reference crown-and-open-book logo */
+.imperial-logo{background:transparent;border-color:transparent;box-shadow:none;backdrop-filter:none}.imperial-logo:hover{background:transparent;border-color:transparent}.imperial-logo svg{width:59px;height:54px}.imperial-logo svg path{fill:none;stroke-linecap:round;stroke-linejoin:round}.imperial-logo svg .logo-crown{stroke:#b8860b!important;stroke-width:14;fill:none!important;stroke-linejoin:miter}.imperial-logo svg .logo-book{stroke:#102846;stroke-width:13}.imperial-logo svg .logo-spine{stroke:#8798b2!important;stroke-width:5}.imperial-logo svg .logo-text-lines{stroke:#8798b2!important;stroke-width:5}.imperial-logo span{color:#102846}.imperial-logo b{color:#b8860b}
+@media(max-width:650px){.imperial-logo svg{width:49px;height:45px}}

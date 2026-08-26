@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1700" viewBox="0 0 1500 1700" role="img" aria-labelledby="title desc">
+  <title id="title">Imperial Academy — wersje podstawowe, świąteczne i halloweenowa</title>
+  <desc id="desc">Sześć wersji podstawowych, sześć odpowiedników z czapką Mikołaja oraz jedna wersja halloweenowa.</desc>
+
+  <defs>
+    <style>
+      .crown { stroke: #B8860B; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .crown-outline { fill: none; }
+      .crown-filled { fill: #B8860B; }
+      .crown-blue { fill: none; stroke: #7CE8FF; }
+      .book { fill: none; stroke: #13233D; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .spine { fill: none; stroke: #60758F; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+      .book-text { fill: none; stroke: #60758F; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+      .brand { font-family: Arial, Helvetica, sans-serif; font-size: 31px; font-weight: 500; letter-spacing: 4px; fill: #13233D; }
+      .academy { fill: #B8860B; font-weight: 700; }
+      .label { font-family: Arial, Helvetica, sans-serif; font-size: 13px; letter-spacing: 2px; fill: #60758F; }
+      .season-label { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; }
+    </style>
+    <g id="santa-hat" stroke-linejoin="round">
+      <path d="M22 43Q49 3 91 31L76 53Z" fill="#C62828" stroke="#981B1B" stroke-width="2.5"/>
+      <path d="M18 42Q49 35 80 51Q82 58 75 62Q48 49 20 54Q14 50 18 42Z" fill="#FFF" stroke="#D9E0E8" stroke-width="2"/>
+      <circle cx="94" cy="32" r="9" fill="#FFF" stroke="#D9E0E8" stroke-width="2"/>
+    </g>
+    <g id="witch-hat" stroke-linejoin="round">
+      <path d="M28 48L58 4L87 49Z" fill="#34204F" stroke="#171020" stroke-width="2.5"/>
+      <path d="M45 29H73L78 39H39Z" fill="#F28C28"/>
+      <path d="M14 49Q57 40 101 51Q57 66 14 54Z" fill="#241633" stroke="#171020" stroke-width="2.5"/>
+      <circle cx="86" cy="16" r="4" fill="#F28C28"/>
+    </g>
+    <linearGradient id="reference-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D4A91C"/>
+      <stop offset="0.52" stop-color="#B8860B"/>
+      <stop offset="1" stop-color="#D6AA20"/>
+    </linearGradient>
+    <linearGradient id="reference-navy" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#132D50"/>
+      <stop offset="1" stop-color="#071A38"/>
+    </linearGradient>
+  </defs>
+
+  <g id="version-1" transform="translate(42 35)">
+    <g transform="scale(2.35)">
+      <path class="crown crown-outline" d="M14 25 11 12l12 8 9-13 9 13 12-8-3 13"/>
+      <path class="book" d="M10 29c9-2 16 0 22 6 6-6 13-8 22-6v24c-9-2-16 0-22 5-6-5-13-7-22-5V29Z"/>
+      <path class="spine" d="M32 35v23"/>
+      <path class="book-text" d="M15 35c7-1 12 1 17 5M49 35c-7-1-12 1-17 5"/>
+    </g>
+    <text class="brand" x="175" y="82">IMPERIAL</text>
+    <text class="brand academy" x="175" y="124">ACADEMY</text>
+    <text class="label" x="0" y="205">WERSJA 1 · ZŁOTY OBRYS KORONY</text>
+  </g>
+
+  <g id="version-2" transform="translate(542 35)">
+    <g transform="scale(2.35)">
+      <path class="crown crown-filled" d="M14 25 11 12l12 8 9-13 9 13 12-8-3 13"/>
+      <path class="book" d="M10 29c9-2 16 0 22 6 6-6 13-8 22-6v24c-9-2-16 0-22 5-6-5-13-7-22-5V29Z"/>
+      <path class="spine" d="M32 35v23"/>
+      <path class="book-text" d="M15 35c7-1 12 1 17 5M49 35c-7-1-12 1-17 5"/>
+    </g>
+    <text class="brand" x="175" y="82">IMPERIAL</text>
+    <text class="brand academy" x="175" y="124">ACADEMY</text>
+    <text class="label" x="0" y="205">WERSJA 2 · WYPEŁNIONA ZŁOTA KORONA</text>
+  </g>
+
+  <g id="version-3" transform="translate(1042 35)">
+    <g transform="scale(2.35)">
+      <path class="crown crown-blue" d="M14 25 11 12l12 8 9-13 9 13 12-8-3 13"/>
+      <path class="book" d="M10 29c9-2 16 0 22 6 6-6 13-8 22-6v24c-9-2-16 0-22 5-6-5-13-7-22-5V29Z"/>
+      <path class="spine" d="M32 35v23"/>
+      <path class="book-text" d="M15 35c7-1 12 1 17 5M49 35c-7-1-12 1-17 5"/>
+    </g>
+    <text class="brand" x="175" y="82">IMPERIAL</text>
+    <text class="brand" x="175" y="124" style="fill:#7CE8FF;font-weight:700">ACADEMY</text>
+    <text class="label" x="0" y="205">WERSJA 3 · NIEBIESKI OBRYS KORONY</text>
+  </g>
+
+  <g id="version-4" transform="translate(42 315)">
+    <g transform="scale(2.35)">
+      <path class="crown crown-outline" d="M14 25 11 12l12 8 9-13 9 13 12-8-3 13"/>
+      <path class="book" d="M10 29c9-2 16 0 22 6 6-6 13-8 22-6v24c-9-2-16 0-22 5-6-5-13-7-22-5V29Z"/>
+      <path class="spine" d="M32 35v23"/>
+      <path class="book-text" d="M15 35c7-1 12 1 17 5M49 35c-7-1-12 1-17 5"/>
+      <path class="book-text book-text-gold" d="M17 44c4 0 7 1 11 3M36 47c4-2 7-3 11-3"/>
+    </g>
+    <text class="brand" x="175" y="82">IMPERIAL</text>
+    <text class="brand academy" x="175" y="124">ACADEMY</text>
+    <text class="label" x="0" y="205">WERSJA 4 · DODATKOWA LINIA W KSIĄŻCE</text>
+  </g>
+
+  <g id="version-5" transform="translate(542 315)">
+    <g transform="scale(2.35)">
+      <path class="crown crown-filled" d="M14 25 11 12l12 8 9-13 9 13 12-8-3 13"/>
+      <path class="book" d="M10 29c9-2 16 0 22 6 6-6 13-8 22-6v24c-9-2-16 0-22 5-6-5-13-7-22-5V29Z"/>
+      <path class="spine" d="M32 35v23"/>
+      <path class="book-text" d="M15 35c7-1 12 1 17 5M49 35c-7-1-12 1-17 5"/>
+      <path class="book-text book-text-gold" d="M17 44c4 0 7 1 11 3M36 47c4-2 7-3 11-3"/>
+    </g>
+    <text class="brand" x="175" y="82">IMPERIAL</text>
+    <text class="brand academy" x="175" y="124">ACADEMY</text>
+    <text class="label" x="0" y="205">WERSJA 5 · WYPEŁNIENIE I LINIA W KSIĄŻCE</text>
+  </g>
+
+  <g id="version-6" transform="translate(1042 315)">
+    <g transform="scale(2.35)">
+      <path class="crown crown-blue" d="M14 25 11 12l12 8 9-13 9 13 12-8-3 13"/>
+      <path class="book" d="M10 29c9-2 16 0 22 6 6-6 13-8 22-6v24c-9-2-16 0-22 5-6-5-13-7-22-5V29Z"/>
+      <path class="spine" d="M32 35v23"/>
+      <path class="book-text" d="M15 35c7-1 12 1 17 5M49 35c-7-1-12 1-17 5"/>
+      <path class="book-text book-text-blue" d="M17 44c4 0 7 1 11 3M36 47c4-2 7-3 11-3"/>
+    </g>
+    <text class="brand" x="175" y="82">IMPERIAL</text>
+    <text class="brand" x="175" y="124" style="fill:#7CE8FF;font-weight:700">ACADEMY</text>
+    <text class="label" x="0" y="205">WERSJA 6 · DODATKOWA LINIA W KSIĄŻCE</text>
+  </g>
+
+  <!-- Sześć świątecznych odpowiedników -->
+  <g transform="translate(0 560)"><use href="#version-1"/><use href="#santa-hat" x="48" y="34"/><text class="season-label" x="42" y="265" fill="#C62828">OPCJA ŚWIĄTECZNA · WERSJA 1</text></g>
+  <g transform="translate(0 560)"><use href="#version-2"/><use href="#santa-hat" x="548" y="34"/><text class="season-label" x="542" y="265" fill="#C62828">OPCJA ŚWIĄTECZNA · WERSJA 2</text></g>
+  <g transform="translate(0 560)"><use href="#version-3"/><use href="#santa-hat" x="1048" y="34"/><text class="season-label" x="1042" y="265" fill="#C62828">OPCJA ŚWIĄTECZNA · WERSJA 3</text></g>
+  <g transform="translate(0 840)"><use href="#version-4" transform="translate(0 -280)"/><use href="#santa-hat" x="48" y="34"/><text class="season-label" x="42" y="265" fill="#C62828">OPCJA ŚWIĄTECZNA · WERSJA 4</text></g>
+  <g transform="translate(0 840)"><use href="#version-5" transform="translate(0 -280)"/><use href="#santa-hat" x="548" y="34"/><text class="season-label" x="542" y="265" fill="#C62828">OPCJA ŚWIĄTECZNA · WERSJA 5</text></g>
+  <g transform="translate(0 840)"><use href="#version-6" transform="translate(0 -280)"/><use href="#santa-hat" x="1048" y="34"/><text class="season-label" x="1042" y="265" fill="#C62828">OPCJA ŚWIĄTECZNA · WERSJA 6</text></g>
+
+  <!-- Wersja halloweenowa -->
+  <g transform="translate(0 1120)">
+    <use href="#version-1"/>
+    <use href="#witch-hat" x="48" y="31"/>
+    <path d="M220 170c8-13 25-13 33 0c-2 18-9 27-16 27s-15-9-17-27Z" fill="#F28C28" stroke="#9B4E12" stroke-width="2"/>
+    <path d="M237 166v-8" fill="none" stroke="#427A38" stroke-width="4" stroke-linecap="round"/>
+    <text class="season-label" x="42" y="265" fill="#F28C28">OPCJA HALLOWEEN</text>
+  </g>
+
+  <!-- Wersja odtworzona z obrazu referencyjnego -->
+  <g id="version-reference" transform="translate(42 1420)">
+    <g transform="translate(0 2) scale(.82)">
+      <path d="M52 77L45 24L91 55L130 5L169 55L215 24L208 77"
+            fill="none" stroke="url(#reference-gold)" stroke-width="14"
+            stroke-linecap="round" stroke-linejoin="miter"/>
+      <path d="M20 105Q82 80 130 126Q178 80 240 105V198Q178 174 130 226Q82 174 20 198Z"
+            fill="none" stroke="url(#reference-navy)" stroke-width="13"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M130 139V215" fill="none" stroke="#8798B2" stroke-width="5"
+            stroke-linecap="round"/>
+      <path d="M49 139Q82 135 112 154M148 154Q178 135 211 139
+               M49 171Q82 167 112 186M148 186Q178 167 211 171"
+            fill="none" stroke="#8798B2" stroke-width="5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text class="brand" x="235" y="93">IMPERIAL</text>
+    <text class="brand academy" x="235" y="135">ACADEMY</text>
+    <text class="label" x="0" y="242">WERSJA 7 · ODTWORZONA Z PLIKU REFERENCYJNEGO</text>
+  </g>
+</svg>
